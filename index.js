@@ -16,12 +16,12 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.json({
-    author: "Ogulcan",
-    message: "Hello, MERN is awesome!",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.json({
+//     author: "Ogulcan",
+//     message: "Hello, MERN is awesome!",
+//   });
+// });
 
 app.use('/api/posts', postRoute);
 
