@@ -2,7 +2,7 @@ var express = require('express');
 var cors = require('cors');
 var mongoose = require('mongoose');
 var dotenv = require('dotenv');
-
+var config =require ('./config');
 var postRoute =require ('./routes/posts.js');
 const app = express();
 dotenv.config();
@@ -24,20 +24,18 @@ app.use(
 // });
 
 app.use('/api/posts', postRoute);
-
-mongoose
-  .connect(process.env.CONNECTION_URL, {
-    useNewUrlParser: true,
+mongoose.connect(process.env.MONGODB_URL ||'mongodb+srv://dbUser:Captain@blog.qr81l.mongodb.net/blog?retryWrites=true&w=majority');
+const mongodbUrl = config.MONGODB_URL;
+mongoose .connect(mongodbUrl, {
+  useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
+    
   })
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port: ${PORT} `);
-    });
-  })
-  .catch((error) => {
-    console.error(error.message);
-  });
+   .catch((error) => console.log(error.reason));
+  
+
+
   if(process.env.NODE_ENV ==='production'){
   app.use(express.static('client/build'));
   
