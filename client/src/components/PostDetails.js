@@ -40,7 +40,7 @@ const PostDetails = () => {
         dispatch(deletePost(currentPost?._id));
         toast.success('Blog successfully removed!');
         setTimeout(() => {
-          history.push('/posts');
+          history.push('/api/posts');
         }, 500);
       }
     } catch (error) {
