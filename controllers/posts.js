@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id",async (req, res) => {
+router.patch("/:id",async (req, res) => {
   const { id: _id } = req.params;
   const post = req.body;
   try {

@@ -1,7 +1,8 @@
 import * as types from './types';
 import * as api from '../../api';
 
-export const fetchPosts = () => async dispatch => {
+
+export const fetchPosts = () => async (dispatch) => {
   try {
     dispatch({ type: types.FETCH_POSTS_REQUEST });
     const { data } = await api.fetchPosts();
@@ -11,9 +12,10 @@ export const fetchPosts = () => async dispatch => {
   }
 };
 
-export const fetchSinglePost = id => async dispatch => {
+export const fetchSinglePost = id => async (dispatch) => {
   try {
     dispatch({ type: types.FETCH_SINGLE_POST_REQUEST });
+    
     const { data } = await api.fetchSinglePost(id);
     dispatch({ type: types.FETCH_SINGLE_POST_SUCCESS, payload: data });
   } catch (error) {
@@ -21,7 +23,7 @@ export const fetchSinglePost = id => async dispatch => {
   }
 };
 
-export const createPost = post => async dispatch => {
+export const createPost = post => async (dispatch) => {
   try {
     dispatch({ type: types.CREATE_POST_REQUEST, payload: post });
     const { data } = await api.createPost(post);
@@ -34,7 +36,7 @@ export const createPost = post => async dispatch => {
   }
 };
 
-export const updatePost = (id, post) => async dispatch => {
+export const updatePost = (id, post) => async (dispatch) => {
   try {
     dispatch({ type: types.UPDATE_POST_REQUEST });
     const { data } = await api.updatePost(id, post);
@@ -47,7 +49,7 @@ export const updatePost = (id, post) => async dispatch => {
   }
 };
 
-export const deletePost = id => async dispatch => {
+export const deletePost = id => async (dispatch) => {
   try {
     dispatch({ type: types.DELETE_POST_REQUEST });
     const { data } = await api.deletePost(id);
