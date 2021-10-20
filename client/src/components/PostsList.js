@@ -12,7 +12,7 @@ const PostsList = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(axios.get("/api/posts"));
+    dispatch(fetchPosts());
   }, [dispatch]);
 
   return (

@@ -1,10 +1,10 @@
 import * as types from './types';
 import * as api from '../../api';
-import axios from 'axios';
+
 export const fetchPosts = () => async dispatch => {
   try {
     dispatch({ type: types.FETCH_POSTS_REQUEST });
-    const { data } =await axios.get("/api/posts");
+    const { data } = await api.fetchPosts();
     dispatch({ type: types.FETCH_POSTS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: types.FETCH_POSTS_FAIL, payload: error.message });
@@ -14,8 +14,7 @@ export const fetchPosts = () => async dispatch => {
 export const fetchSinglePost = id => async dispatch => {
   try {
     dispatch({ type: types.FETCH_SINGLE_POST_REQUEST });
-    const { data } = await axios.get(`/api/posts/${id}`);
-   
+    const { data } = await api.fetchSinglePost(id);
     dispatch({ type: types.FETCH_SINGLE_POST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: types.FETCH_SINGLE_POST_FAIL, payload: error.message });
@@ -25,8 +24,7 @@ export const fetchSinglePost = id => async dispatch => {
 export const createPost = post => async dispatch => {
   try {
     dispatch({ type: types.CREATE_POST_REQUEST, payload: post });
-    const { data } = await axios.post(`/api/posts`);
-    
+    const { data } = await api.createPost(post);
     dispatch({
       type: types.CREATE_POST_SUCCESS,
       payload: data,
@@ -39,8 +37,7 @@ export const createPost = post => async dispatch => {
 export const updatePost = (id, post) => async dispatch => {
   try {
     dispatch({ type: types.UPDATE_POST_REQUEST });
-    const { data } = await axios.put(`/api/posts/${id}`);
-    
+    const { data } = await api.updatePost(id, post);
     dispatch({
       type: types.UPDATE_POST_SUCCESS,
       payload: data,
@@ -53,7 +50,7 @@ export const updatePost = (id, post) => async dispatch => {
 export const deletePost = id => async dispatch => {
   try {
     dispatch({ type: types.DELETE_POST_REQUEST });
-    const { data } = await axios.delete(`/api/posts/${id}`);
+    const { data } = await api.deletePost(id);
     dispatch({
       type: types.DELETE_POST_SUCCESS,
       payload: data._id,
