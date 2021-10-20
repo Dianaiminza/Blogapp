@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Post from './Post';
-import { fetchPosts } from '../redux/actions/post';
+import { fetchPosts,listPost } from '../redux/actions/post';
 import Loader from './Loader';
 import { useColorModeValue, Box, Wrap, Flex } from '@chakra-ui/react';
 
@@ -14,7 +14,8 @@ const PostsList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPosts());
-  }, [dispatch]);
+
+  }, []);
 
   return (
     <Flex

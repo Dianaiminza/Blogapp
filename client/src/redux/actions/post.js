@@ -1,6 +1,6 @@
 import * as types from './types';
 import * as api from '../../api';
-
+import Axios from "axios";
 
 export const fetchPosts = () => async (dispatch) => {
   try {
@@ -11,7 +11,16 @@ export const fetchPosts = () => async (dispatch) => {
     dispatch({ type: types.FETCH_POSTS_FAIL, payload: error.message });
   }
 };
+const listPost = () => async (dispatch) => {
 
+  try {
+    dispatch({ type: types.FETCH_POSTS_REQUEST });
+    const { data } = await Axios.get("/api/posts");
+    dispatch({ type: types.FETCH_POSTS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: types.FETCH_POSTS_FAIL, payload: error.message });
+  }
+}
 export const fetchSinglePost = id => async (dispatch) => {
   try {
     dispatch({ type: types.FETCH_SINGLE_POST_REQUEST });
@@ -61,3 +70,4 @@ export const deletePost = id => async (dispatch) => {
     dispatch({ type: types.DELETE_POST_FAIL, payload: error.message });
   }
 };
+export { listPost };
