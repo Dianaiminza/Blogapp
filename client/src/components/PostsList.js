@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Post from './Post';
+import axios from 'axios';
 import { fetchPosts } from '../redux/actions/post';
 import Loader from './Loader';
 import { useColorModeValue, Box, Wrap, Flex } from '@chakra-ui/react';
@@ -11,7 +12,7 @@ const PostsList = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(axios.get("/api/posts"));
   }, [dispatch]);
 
   return (
