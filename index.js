@@ -24,7 +24,7 @@ app.use(
 // });
 
 app.use('/api/posts', postRoute);
-mongoose.connect(process.env.MONGODB_URL ||'mongodb+srv://dbUser:Captain@blog.qr81l.mongodb.net/blog?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGODB_URL ||'');
 const mongodbUrl = config.MONGODB_URL;
 mongoose .connect(mongodbUrl, {
   useNewUrlParser: true,
