@@ -36,7 +36,7 @@ const Post = ({ post }) => {
             fontWeight="bold"
             fontSize="2xl"
             _hover={{ color: 'gray.500', textDecor: 'underline' }}
-            href={`api/posts/${post._id}`}
+            href={`/posts/${post._id}`}
           >
             {post.title}
           </Link>

@@ -29,7 +29,7 @@ export default function CallToActionWithAnnotation() {
           <Stack direction={'column'} spacing={3} align={'center'} alignSelf={'center'} position={'relative'}>
             <Button
               as={Link}
-              href={'https://localhost:8080/api/posts'}
+              href={'/posts'}
               colorScheme={'green'}
               bg={'green.500'}
               rounded={'full'}

@@ -2,8 +2,8 @@ var Post =require("../models/posts.js");
 var express =require ('express');
 var router=express.Router();
 router.get("/", async (req, res) => {
-  const posts = await Post.find();
-  res.send(posts);
+  const post = await Post.find();
+  res.send(post);
 });
 
 router.get("/:id", async (req, res) => {
